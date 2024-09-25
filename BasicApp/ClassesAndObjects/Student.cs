@@ -1,17 +1,6 @@
-class Student : Person
+class Student(string n, int r, DateTime d, char g) : Person(n, d, g)
 {
-    // Default parameterless constructor
-    // public Student()
-    // {        
-    // }
-
-    // Parameterized contructor
-    public Student(string n, int r, DateTime d, char g) : base(n, d, g)
-    {   
-        rollNumber = r;  
-    }
-    
-    public int rollNumber;
+    public int rollNumber = r;
 
     public override void PrintDetails()
     {

@@ -1,11 +1,6 @@
-class Teacher : Person
+class Teacher(string n, string q, DateTime d, char g) : Person(n, d, g)
 {
-    public string qualification = "";
-
-    public Teacher(string n, string q, DateTime d, char g) : base(n, d, g)
-    {   
-        qualification = q;  
-    }
+    public string qualification = q;
 
     public override void PrintDetails()
     {

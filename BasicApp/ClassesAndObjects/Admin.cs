@@ -1,11 +1,8 @@
-class Admin : Person
+class Admin(string n, string r, DateTime d, char g) : Person(n, d, g)
 {
-    public string role = "";
-    public Admin(string n, string r, DateTime d, char g) : base (n, d, g)
-    {
-        role = r;
-    }
-   public override void PrintDetails()
+    public string role = r;
+
+    public override void PrintDetails()
     {
         base.PrintDetails();
         Console.WriteLine($"\t\t{role}");

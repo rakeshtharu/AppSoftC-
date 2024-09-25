@@ -1,16 +1,9 @@
-public class Person
+public class Person(string n, DateTime d, char g)
 {
-    public Person(string n, DateTime d, char g)
-    {
-        name = n;
-        dateOfBirth = d;
-        gender = g;
-    }
-
-    public string name = "";
-    public DateTime dateOfBirth;
+    public string name = n;
+    public DateTime dateOfBirth = d;
     string resume = "";
-    public char gender;
+    public char gender = g;
 
     public virtual void PrintDetails()
     {
