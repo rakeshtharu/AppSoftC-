@@ -1,4 +1,5 @@
-﻿// Student.PrintHeader();
+﻿using CollegeManagement;
+// Student.PrintHeader();
 // var student1 = new Student("Rakesh Tharu",24, new DateTime(2000,03,14), 'M');
 // student1.PrintDetails();
 
@@ -32,6 +33,7 @@
 Student.PrintHeader();
 
 var student = new Student("Sita Bond", 68, new DateTime(1990, 1, 11), 'F');
+student.Resume = "";
 student.PrintDetails();
 
 var student3 = new Student("James Bond", 67, new DateTime(1990, 1, 11), 'F');

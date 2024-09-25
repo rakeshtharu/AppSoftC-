@@ -1,9 +1,23 @@
+namespace CollegeManagement;
 public class Person(string n, DateTime d, char g)
 {
     public string name = n;
     public DateTime dateOfBirth = d;
-    string resume = "";
     public char gender = g;
+
+    string resume = "";
+
+    public string Resume{
+        get{
+            return resume;
+        }
+        set{
+            if(value.Length >=5)
+            resume = value;
+        }
+    }
+
+
 
     public virtual void PrintDetails()
     {
