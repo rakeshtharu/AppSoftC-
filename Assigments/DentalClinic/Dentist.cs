@@ -1,10 +1,10 @@
 public class Dentist : Person, IMedicine
 {
-    public string specialization { get; set; }
+    public string Specialization { get; set; }
 
     public Dentist(string name, int age, string address, string specialization) : base(name, age, address)
     {
-        this.specialization = specialization;
+      Specialization = specialization;
     }
 
     // Implement IMedicine methods
@@ -22,6 +22,6 @@ public class Dentist : Person, IMedicine
     public override void DisplayInfo()
     {
         base.DisplayInfo();
-        Console.WriteLine($"Specialization: {specialization}");
+        Console.WriteLine($"Specialization: {Specialization}");
     }
 }
