@@ -30,28 +30,35 @@
 // ElectricityBillUsingSwitch ebs = new();
 // ebs.Main();
 
-Student.PrintHeader();
+// Student.PrintHeader();
 
-var student = new Student("Sita Bond", 68, new DateTime(1990, 1, 11), 'F');
-student.Resume = "";
-student.PrintDetails();
+// var student = new Student("Sita Bond", 68, new DateTime(1990, 1, 11), 'F');
+// student.Resume = "";
+// student.PrintDetails();
 
-var student3 = new Student("James Bond", 67, new DateTime(1990, 1, 11), 'F');
-student3.PrintDetails();
+// var student3 = new Student("James Bond", 67, new DateTime(1990, 1, 11), 'F');
+// student3.PrintDetails();
 
-var student4 = new Student("Rakeesh Bond", 798, new DateTime(2000, 1, 11), 'M');
-student4.PrintDetails();
+// var student4 = new Student("Rakeesh Bond", 798, new DateTime(2000, 1, 11), 'M');
+// student4.PrintDetails();
 
-Teacher.PrintHeader();
-var teacher1 = new Teacher("Rakeesh Rana", "MS Computer Science", new DateTime(2000, 1, 11), 'M');
-teacher1.PrintDetails();
-var teacher2 = new Teacher("Rakeesh Rana", "MS Computer Science", new DateTime(2000, 1, 11), 'M');
-teacher2.PrintDetails();
+// Teacher.PrintHeader();
+// var teacher1 = new Teacher("Rakeesh Rana", "MS Computer Science", new DateTime(2000, 1, 11), 'M');
+// teacher1.PrintDetails();
+// var teacher2 = new Teacher("Rakeesh Rana", "MS Computer Science", new DateTime(2000, 1, 11), 'M');
+// teacher2.PrintDetails();
 
-Admin.PrintHeader();
-var admin1 = new Admin("Iron man", "Administrator", new DateTime(1998, 09, 11), 'M');
-admin1.PrintDetails();
-var admin2 = new Admin("Loki", "Lab Assistant", new DateTime(1990, 12, 11), 'M');
-admin2.PrintDetails();
+// Admin.PrintHeader();
+// var admin1 = new Admin("Iron man", "Administrator", new DateTime(1998, 09, 11), 'M');
+// admin1.PrintDetails();
+// var admin2 = new Admin("Loki", "Lab Assistant", new DateTime(1990, 12, 11), 'M');
+// admin2.PrintDetails();
+
+FileAndFolderHandler f1 = new();
+//f1.CreateFile();
+f1.ReadFile();
+
+//f1.CreateFolder("TestFolder");
+f1.ReadCsv();
 
 // dotnet new console -n appname
