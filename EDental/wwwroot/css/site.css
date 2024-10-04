@@ -2,13 +2,11 @@ html {
   font-size: 14px;
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-check-input:focus {
   box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
@@ -19,4 +17,134 @@ html {
 
 body {
   margin-bottom: 60px;
+}
+
+.container{
+  width: 100%;
+}
+
+#hero {
+  background-image: url('/images/dental_care.png');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  color: rgb(74, 75, 87);
+  text-align: center;
+}
+
+#hero h1 {
+  font-size: 4rem;
+  font-weight: bold;
+}
+
+#hero p {
+  font-size: 1.5 rem;
+  margin-bottom: 1.5rem;
+}
+
+#serviceshero {
+  background-image: url('/images/patient-appointment-village-dental.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  background-position: center;
+  justify-content: flex-start;
+  color: whitesmoke;
+  align-items: center;
+  padding-left: 50px;
+}
+
+#serviceshero .text-center {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  /* Align items to the start of the flex container */
+}
+
+#serviceshero h1,
+#serviceshero h2,
+#serviceshero p {
+  margin-bottom: 10px;
+ 
+}
+
+#serviceshero button {
+  margin-top: 10px;
+}
+
+#services2{
+  background-color: white;
+  background-size: cover;
+  height: 100vh;
+  justify-items: center;
+  align-content: center;
+}
+#Services2 p{
+  text-align: left;
+}
+#services3{
+  background-color: aquamarine;
+  background-size: cover;
+  height: 30vh;
+  justify-items: center;
+  align-content: center;
+}
+#services4{
+  height: 100vh;
+  align-items: center;
+}
+#services4 h1,
+#Services4 p{
+  text-align: left;
+}
+
+/* @media (min-width: 576px){
+.container, .container-sm {
+      max-width: 1200px;
+  }
+} */
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }  
+}
+
+@media (max-width: 768px) {
+  #serviceshero h1
+  {
+    margin-bottom: 0px;
+    font-size: 20px;
+  }
+  #serviceshero h2
+  {
+    margin-bottom: 0px;
+    font-size: 15px;
+  }
+  #serviceshero p
+  {
+    margin-bottom: 0px;
+    font-size: 10px;
+  }
+  #serviceshero button
+  {
+   margin-top: 4px;
+    padding: 5px, 10px;
+    width: auto;
+    height: auto;
+    font-size: 0.5rem;
+  }
+  #services2 img {
+    height: 20vh;
+    align-items: center;
+  }
+  #services4 img {
+    height: 20vh;
+    align-items: center;
+    margin:2px;
+  }
 }
