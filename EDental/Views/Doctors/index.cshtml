@@ -1,0 +1,40 @@
+@model List<Doctors>
+@{
+    ViewData["title"] = "Doctors";
+}
+<div class="container">
+    <div class="row-cols-12">
+        <button type="button" class="btn btn-primary">Add Doctors</button>
+    </div>
+    <div class="row">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">NDC Number</th>
+                    <th scope="col">Qualification</th>
+                    <th scope="col">Speciality</th>
+                    <th scope="col">Gender</th>
+                    <th scope="col">Date of Birth</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var doc in Model)
+                {
+                    <tr>
+                        <td>@doc.FullName</td>
+                        <td>@doc.Address</td>
+                        <td>@doc.Phone</td>
+                        <td>@doc.NDCNumber</td>
+                        <td>@doc.Qualification</td>
+                        <td>@doc.Specialization</td>
+                        <td>@doc.Gender</td>
+                        <td>@doc.DOB.ToLongDateString()</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

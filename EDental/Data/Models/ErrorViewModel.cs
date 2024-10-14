@@ -1,4 +1,4 @@
-namespace EDental.Models;
+namespace EDental.Data.Models;
 
 public class ErrorViewModel
 {
