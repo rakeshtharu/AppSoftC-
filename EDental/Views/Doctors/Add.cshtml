@@ -1,0 +1,46 @@
+﻿@model Doctors
+
+@{
+    ViewData["Title"] = "New Doctor Entry";
+
+    var genders = Enum.GetValues<Gender>();
+    var genderList = genders.Select(x => new SelectListItem { Text = x.ToString(), Value = ((int)x).ToString() });
+}
+<p>New Doctor View</p>
+<form class="row g-3" asp-action="Add" method="post">
+    <div class="col-md-6">
+        <label asp-for="FullName" class="form-label"></label>
+        <input asp-for="FullName" class="form-control">
+    </div>
+    <div class="col-md-6">
+        <label asp-for="Address" class="form-label"></label>
+        <input asp-for ="Address" class="form-control">
+    </div>
+    <div class="col-12">
+        <label asp-for="Phone" class="form-label"></label>
+        <input asp-for="Phone" class="form-control">
+    </div>
+    <div class="col-12">
+        <label asp-for="NDCNumber" class="form-label"></label>
+        <input asp-for="NDCNumber" class="form-control">
+    </div>
+    <div class="col-12">
+        <label asp-for="Qualification" class="form-label"></label>
+        <input asp-for="Qualification" class="form-control">
+    </div>
+    <div class="col-12">
+        <label asp-for="Specialization" class="form-label"></label>
+        <input asp-for="Specialization" class="form-control">
+    </div>
+    <div class="col-12">
+    <label asp-for="Gender" class="form-label"></label>
+    <select asp-items="genderList"  class="form-control" asp-for="Gender"></select>
+    </div>
+    <div class="col-12">
+        <label asp-for="DOB" class="form-label"></label>
+        <input asp-for="DOB" class="form-control">
+    </div>
+    <div class="col-12">
+        <button type="submit" class="btn btn-primary">  <i class="bi bi-floppy">  Save</i> </button>
+    </div>
+</form>
