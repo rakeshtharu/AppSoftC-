@@ -1,0 +1,48 @@
+﻿@model List<Diagnosis>
+@{
+    ViewData["Title"] = "Diagnosis";
+}
+
+<div class="container">
+    <div class="row-cols-12">
+        <a asp-controller="Doctors" asp-action="Add" class="btn btn-primary"><i class="bi bi-plus-lg"></i></a>
+    </div>
+    <div class="row mt-3">
+        <table class="table table-bordered border-primary">
+            <thead>
+                <tr>
+                    <th scope="col">Diagnosis Id</th>
+                    <th scope="col">Patient Id</th>
+                    <th scope="col">Diagnosis Name</th>
+                    <th scope="col">Diagnosis Date</th>
+                    <th scope="col">Docotr Id</th>
+                    <th scope="col">Symptoms</th>
+                    <th scope="col">Medication Prescribed</th>
+                    <th scope="col">Diagnosis Status</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var diag in Model)
+                {
+                    <tr>
+                        <td>@diag.DiagnosisId</td>
+                        <td>@diag.PatientId</td>
+                        <td>@diag.DiagnosisName</td>
+                        <td>@diag.DiagnosisDate.ToString("MM/dd/yyyy")</td>
+                        <td>@diag.DoctorId</td>
+                        <td>@diag.Symptoms</td>
+                        <td>@diag.MedicationPrescribed</td>
+                        <td>@diag.DiagnosisStatus</td>
+                        <td>
+                            <a asp-controller="" asp-action="Update" asp-route-id="@diag.DiagnosisId" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
+                            ||
+                            <a asp-controller="" asp-action="Delete" asp-route-id="@diag.DiagnosisId" class="btn btn-danger"><i class="bi bi-trash-fill"></i></a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+</div>
