@@ -26,23 +26,40 @@ public class DoctorsController: Controller
         db.SaveChanges();
         return RedirectToAction(nameof(Index));
     }
-    [HttpPost]
+
+    [HttpGet]
     public IActionResult Delete(int id)
     {
-        Console.Write(id);
         var db = new EDentalDbContext();
         var doctor = db.Doctors.Find(id);
-        if(doctor !=null)
-        {
-            db.Doctors.Remove(doctor);
-            db.SaveChanges();
-           
-        }
+        return View(doctor);
+    }
+
+    [HttpPost]
+    public IActionResult Delete(Doctors doctors)
+    {
+        //Save to db
+        var db = new EDentalDbContext();
+        db.Doctors.Remove(doctors);
+        db.SaveChanges();
         return RedirectToAction(nameof(Index));
     }
     [HttpGet]
-    public IActionResult Update()
+    public IActionResult Update(int id)
     {
-        return View();
+        var db = new EDentalDbContext();
+        var doctor = db.Doctors.Find(id);
+
+        return View(doctor);
+    }
+
+    [HttpPost]
+    public IActionResult Update(Doctors doctors)
+    {
+        //Save to db
+        var db = new EDentalDbContext();
+        db.Doctors.Update(doctors);
+        db.SaveChanges();
+        return RedirectToAction(nameof(Index));
     }
 }

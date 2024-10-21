@@ -1,11 +1,11 @@
 ﻿@model Diagnosis
 @{
-    ViewData["Title"] = "New Diagnosis Entry";
+    ViewData["Title"] = "Edit Diagnosis Entry";
 
     var diagnosisStatus = Enum.GetValues<DiagnosisStatus>();
     var diagnosisStatusList = diagnosisStatus.Select(x => new SelectListItem { Text = x.ToString(), Value = ((int)x).ToString() });
 }
-<form class="row g-3" asp-action="Add" method="post">
+<form class="row g-3" asp-action="Update" method="post">
     <div class="col-md-6">
         <label asp-for="PatientId" class="form-label"></label>
         <input asp-for="PatientId" class="form-control">
@@ -20,9 +20,9 @@
     </div>
     <div class="col-12">
         <label asp-for="DiagnosisStatus" class="form-label"></label>
-        <select asp-items="diagnosisStatusList" class="form-control" asp-for="DiagnosisStatus" > </select>
+        <select asp-items="diagnosisStatusList" class="form-control" asp-for="DiagnosisStatus"> </select>
     </div>
     <div class="col-12">
-        <button type="submit" class="btn btn-primary">  <i class="bi bi-floppy">  Save</i> </button>
+        <button type="submit" class="btn btn-primary">  <i class="bi bi-floppy">  Update</i> </button>
     </div>
 </form>

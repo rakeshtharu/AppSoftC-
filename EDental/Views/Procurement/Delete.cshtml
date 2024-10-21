@@ -1,0 +1,13 @@
+﻿@model Procurement
+
+@{
+    ViewData["Title"] = "Delete Docotr Entry";
+}
+
+<h3>Are you sure want to delete record for @Model.Vendor?</h3>
+<form class="row g-3" asp-action="Delete" method="post">
+    <div class="col-12">
+        <button type="submit" class="btn btn-danger">  <i class="bi bi-Trash">  Delete</i> </button>
+        <a href="/procurement" class="btn btn-success"><i class="bi bi-back"></i> Cancel</a>
+    </div>
+</form>

@@ -34,9 +34,9 @@
                         <td>@doc.Gender</td>
                         <td>@doc.DOB.ToLongDateString()</td>
                         <td>
-                            <a asp-controller="Doctors" asp-action="Update" asp-route-id="@doc.Id" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
+                            <a href="/Doctors/Update/@doc.Id" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
                             ||
-                            <a asp-controller="Doctors" asp-action="Delete" asp-route-id="@doc.Id" class="btn btn-danger"><i class="bi bi-trash-fill"></i></a>
+                            <a href="/Doctors/Delete/@doc.Id" class="btn btn-danger"><i class="bi bi-trash-fill"></i></a>
                         </td>
                     </tr>
                 }

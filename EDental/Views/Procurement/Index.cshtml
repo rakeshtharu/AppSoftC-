@@ -1,0 +1,41 @@
+﻿@{
+    ViewData["Title"] = "Procurement --List";
+}
+@model List<Procurement>
+<div class="container">
+    <div class="row">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Particulars</th>
+                    <th scope="col">Vendor</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Warranty</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var proc in Model)
+                {
+                    <tr>
+                        <td>@proc.Particulars</td>
+                        <td>@proc.Vendor</td>
+                        <td>@proc.Price</td>
+                        <td>@proc.Quantity</td>
+                        <td>@proc.Warranty</td>
+                        <td>@proc.Date.ToLongDateString()</td>
+                        <td>
+                            <a href="/Procurement/Update/@proc.Id" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
+                            ||
+                            <a href="/Procurement/Delete/@proc.Id" class="btn btn-danger"><i class="bi bi-trash-fill"></i></a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
