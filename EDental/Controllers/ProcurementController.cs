@@ -4,9 +4,10 @@ using Microsoft.AspNetCore.Mvc;
 
 public class ProcurementController : Controller
 {
+    EDentalDbContext db = new EDentalDbContext();
+   
     public IActionResult Index()
-    {
-        var db = new EDentalDbContext();
+    {  
         var procurement = db.Procurement.ToList();
         return View(procurement);
     }
@@ -20,7 +21,6 @@ public class ProcurementController : Controller
     public IActionResult Add(Procurement procurement)
     {
         //Save to db
-        var db = new EDentalDbContext();
         db.Procurement.Add(procurement);
         db.SaveChanges();
         return RedirectToAction(nameof(Index));
@@ -29,7 +29,6 @@ public class ProcurementController : Controller
     [HttpGet]
     public IActionResult Delete(int id)
     {
-        var db = new EDentalDbContext();
         var procurement = db.Procurement.Find(id);
         return View(procurement);
     }
@@ -38,7 +37,6 @@ public class ProcurementController : Controller
     public IActionResult Delete(Procurement procurement)
     {
         //Save to db
-        var db = new EDentalDbContext();
         db.Procurement.Remove(procurement);
         db.SaveChanges();
         return RedirectToAction(nameof(Index));
@@ -46,7 +44,6 @@ public class ProcurementController : Controller
     [HttpGet]
     public IActionResult Update(int id)
     {
-        var db = new EDentalDbContext();
         var procurement = db.Procurement.Find(id);
 
         return View(procurement);
@@ -56,7 +53,6 @@ public class ProcurementController : Controller
     public IActionResult Update(Procurement procurement)
     {
         //Save to db
-        var db = new EDentalDbContext();
         db.Procurement.Update(procurement);
         db.SaveChanges();
         return RedirectToAction(nameof(Index));

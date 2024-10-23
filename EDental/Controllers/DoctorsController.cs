@@ -1,13 +1,15 @@
 using EDental.Data;
 using EDental.Data.Models;
+using EDental.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using System.Numerics;
 
-public class DoctorsController: Controller
+public class DoctorsController(IDoctorsRepository doctorsRepository): Controller
 {
+   private readonly IDoctorsRepository doctorsRepository = doctorsRepository;  //Dependancy Injection(DI)
     public IActionResult Index()
     {
-        var db = new EDentalDbContext();
-        var doctors = db.Doctors.ToList();
+        var doctors = doctorsRepository.Get();
         return View(doctors);
     }
 
@@ -20,46 +22,35 @@ public class DoctorsController: Controller
     [HttpPost]
     public IActionResult Add(Doctors doctors)
     {
-        //Save to db
-        var db = new EDentalDbContext();
-        db.Doctors.Add(doctors);
-        db.SaveChanges();
+       doctorsRepository.Insert(doctors);
+        return RedirectToAction(nameof(Index));
+    }
+    [HttpGet]
+    public IActionResult Update(int id)
+    {
+        var doctors = doctorsRepository.Get(id);
+        return View(doctors);
+    }
+
+    [HttpPost]
+    public IActionResult Update(Doctors doctors)
+    {
+        doctorsRepository.Update(doctors);
         return RedirectToAction(nameof(Index));
     }
 
     [HttpGet]
     public IActionResult Delete(int id)
     {
-        var db = new EDentalDbContext();
-        var doctor = db.Doctors.Find(id);
-        return View(doctor);
+        var doctors = doctorsRepository.Get(id);
+        return View(doctors);
     }
 
     [HttpPost]
     public IActionResult Delete(Doctors doctors)
     {
         //Save to db
-        var db = new EDentalDbContext();
-        db.Doctors.Remove(doctors);
-        db.SaveChanges();
-        return RedirectToAction(nameof(Index));
-    }
-    [HttpGet]
-    public IActionResult Update(int id)
-    {
-        var db = new EDentalDbContext();
-        var doctor = db.Doctors.Find(id);
-
-        return View(doctor);
-    }
-
-    [HttpPost]
-    public IActionResult Update(Doctors doctors)
-    {
-        //Save to db
-        var db = new EDentalDbContext();
-        db.Doctors.Update(doctors);
-        db.SaveChanges();
+        doctorsRepository.Delete(doctors);
         return RedirectToAction(nameof(Index));
     }
 }

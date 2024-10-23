@@ -1,7 +1,14 @@
+using EDental.Data;
+using EDental.Infrastructure.Repositories;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+//DEPENDANCY INJECTION KO LAGI Registration
+builder.Services.AddDbContext<EDentalDbContext>();
+builder.Services.AddScoped<IDoctorsRepository, DoctorsRepository>();
 
 var app = builder.Build();
 
