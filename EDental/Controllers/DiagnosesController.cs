@@ -1,40 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using EDental.Data;
 using EDental.Data.Models;
+using EDental.Infrastructure.Repositories.Interfaces;
 
 namespace EDental.Controllers
 {
-    public class DiagnosesController : Controller
+    public class DiagnosesController(IDiagnosesRepository diagnosesRepository) : Controller
     {
-        private readonly EDentalDbContext _context;
-
-        public DiagnosesController(EDentalDbContext context)
-        {
-            _context = context;
-        }
+        private readonly IDiagnosesRepository _diagnosesRepository = diagnosesRepository;
 
         // GET: Diagnoses
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Diagnosis.ToListAsync());
+            var diagnoses = _diagnosesRepository.Get().ToList();
+            return View();
         }
 
+
         // GET: Diagnoses/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(int id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var diagnosis = await _context.Diagnosis
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var diagnosis = _diagnosesRepository.Get(id);
             if (diagnosis == null)
             {
                 return NotFound();
@@ -48,42 +39,31 @@ namespace EDental.Controllers
         {
             return View();
         }
-
-        // POST: Diagnoses/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Name,DiagnosisName,Procedures,Medication")] Diagnosis diagnosis)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(diagnosis);
-                await _context.SaveChangesAsync();
+                _diagnosesRepository.Insert(diagnosis);
                 return RedirectToAction(nameof(Index));
             }
             return View(diagnosis);
         }
-
-        // GET: Diagnoses/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(int id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var diagnosis = await _context.Diagnosis.FindAsync(id);
+            var diagnosis = _diagnosesRepository.Get(id);
             if (diagnosis == null)
             {
                 return NotFound();
             }
             return View(diagnosis);
         }
-
-        // POST: Diagnoses/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name,DiagnosisName,Procedures,Medication")] Diagnosis diagnosis)
@@ -97,8 +77,7 @@ namespace EDental.Controllers
             {
                 try
                 {
-                    _context.Update(diagnosis);
-                    await _context.SaveChangesAsync();
+                    _diagnosesRepository.Update(diagnosis);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -115,17 +94,14 @@ namespace EDental.Controllers
             }
             return View(diagnosis);
         }
-
-        // GET: Diagnoses/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(int id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var diagnosis = await _context.Diagnosis
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var diagnosis = _diagnosesRepository.Get(id);
             if (diagnosis == null)
             {
                 return NotFound();
@@ -134,24 +110,27 @@ namespace EDental.Controllers
             return View(diagnosis);
         }
 
-        // POST: Diagnoses/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var diagnosis = await _context.Diagnosis.FindAsync(id);
+            var diagnosis = _diagnosesRepository.Get(id);
             if (diagnosis != null)
             {
-                _context.Diagnosis.Remove(diagnosis);
+                _diagnosesRepository.Delete(diagnosis);
             }
 
-            await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool DiagnosisExists(int id)
         {
-            return _context.Diagnosis.Any(e => e.Id == id);
+            var data = _diagnosesRepository.Get(id);
+            if (data != null)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

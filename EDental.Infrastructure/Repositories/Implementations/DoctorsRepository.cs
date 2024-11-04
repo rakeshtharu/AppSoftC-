@@ -6,16 +6,10 @@ using System.Text;
 using System.Threading.Tasks;
 using EDental.Data;
 using EDental.Data.Models;
+using EDental.Infrastructure.Repositories.Interfaces;
 
-namespace EDental.Infrastructure.Repositories;
-public interface IDoctorsRepository
-{
-    public List<Doctors> Get();
-    public Doctors Get(int id);
-    public int Insert(Doctors doctors);
-    public int Update(Doctors doctors);
-    public int Delete(Doctors doctors);
-}
+namespace EDental.Infrastructure.Repositories.Implementations;
+
 public class DoctorsRepository(EDentalDbContext dbContext) : IDoctorsRepository
 {
     private readonly EDentalDbContext db = dbContext;
